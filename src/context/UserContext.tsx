@@ -1,7 +1,7 @@
 import Axios from 'axios'
 import React, {createContext, useReducer} from 'react'
 import { initialUserState, reducer } from './reducer'
-import { CLEAR, LOGIN, LOGIN_ERROR, REGISTER, REGISTER_ERROR } from './types'
+import { CLEAR, FACEBOOK, LOGIN, LOGIN_ERROR, REGISTER, REGISTER_ERROR } from './types'
 
 export type UserType = {
   username?: string;
@@ -14,6 +14,7 @@ type UserContextType = {
   registerUser: (user: UserType, history: any) => void;
   loginUser: (user: UserType, history: any) => void;
   clearUser: (history: any) => void;
+  responseFacebook: (response: any, history: any) => void;
   user: UserType | null,
   login_error: null,
   register_error: null,
@@ -23,6 +24,7 @@ export const UserContext = createContext<UserContextType>({
   registerUser: (user: UserType, history: any) => {},
   loginUser: (user: UserType, history: any) => {},
   clearUser: (history: any) => {},
+  responseFacebook: (response: any, history: any) => {},
   user: null,
   login_error: null,
   register_error: null,
@@ -54,11 +56,21 @@ export const UserProvider = ({children}: any) => {
     dispatch({type: CLEAR, payload: null})
     history.push('/')
   }
+  const responseFacebook = (response: any, history: any) => {
+    dispatch({type: FACEBOOK, payload: {
+      ...response,
+      username: response?.name
+    }})
+    if(response?.email) {
+      history.push('/user')
+    }
+  }
 
   const value = {
     registerUser,
     loginUser,
     clearUser,
+    responseFacebook,
     user: state.user,
     login_error: state.login_error,
     register_error: state.register_error,

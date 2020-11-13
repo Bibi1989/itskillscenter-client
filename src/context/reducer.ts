@@ -1,4 +1,4 @@
-import { CLEAR, LOGIN, LOGIN_ERROR, REGISTER, REGISTER_ERROR } from "./types";
+import { CLEAR, FACEBOOK, LOGIN, LOGIN_ERROR, REGISTER, REGISTER_ERROR } from "./types";
 import { UserType } from "./UserContext";
 
 
@@ -26,6 +26,11 @@ export const reducer = (state: StateType, action: ActionType) => {
         user: action.payload
       }
     case LOGIN:
+      return {
+        ...state,
+        user: action.payload
+      }
+    case FACEBOOK:
       return {
         ...state,
         user: action.payload

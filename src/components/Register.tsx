@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import FacebookLogin from 'react-facebook-login';
+
 import { UserContext } from '../context/UserContext'
 import CustomButtons from '../ui/Buttons'
 import CustomInput from '../ui/CustomInput'
@@ -20,7 +22,9 @@ type TargetType = {
 
 const Register = () => {
 
-  const {user, register_error, registerUser} = useContext(UserContext)
+  const facebookID: any = process.env.REACT_APP_FACEBOOK_APP_ID
+
+  const {user, register_error, registerUser, responseFacebook} = useContext(UserContext)
 
   const history = useHistory()
 
@@ -98,6 +102,23 @@ const Register = () => {
               width: '150px',
               textAlign: 'center'
             }} />
+            <FacebookLogin
+              appId={facebookID}
+              autoLoad={true}
+              fields="name,email,picture"
+              // onClick={componentClicked}
+              callback={(response: any) => responseFacebook(response, history)}
+              textButton={"Facebook"}
+              icon="fa-facebook"
+              containerStyle={{
+                marginRight: '15px',
+                width: '150px',
+                textAlign: 'center',
+                height: "35px",
+                fontSize: '14px'
+              }}
+              size="small"
+            />
             <CustomButtons title={"Twitter"} color={"#777777"} style={{
               background: "white",
               border: '1px solid #777777',
