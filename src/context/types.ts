@@ -1,0 +1,6 @@
+export const REGISTER = 'register'
+export const LOGIN = 'login'
+export const GET_USER = 'get_user'
+export const LOGIN_ERROR = 'login_error'
+export const REGISTER_ERROR = 'register_error'
+export const CLEAR = 'CLEAR'
