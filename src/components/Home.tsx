@@ -10,11 +10,11 @@ const Home = () => {
   return (
     <Section>
       <ExtendedRow>
-        <Col span={12}>
+        <Col lg={12} md={24}>
           <FirstColumn>
             <img src={image} alt="just there" width="95%" />
           </FirstColumn></Col>
-        <Col span={12}>
+        <Col lg={12} md={24}>
           <SecondColumn>
             <h1>IT SKILLS CENTER</h1>
             <h3>Home For Your Technology Solutions</h3>
