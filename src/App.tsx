@@ -10,7 +10,8 @@ import { UserProvider } from './context/UserContext';
 import Axios from 'axios';
 import SuccesComponent from './components/SuccesComponent';
 
-Axios.defaults.baseURL = "http://localhost:5005/auth/v1"
+// Axios.defaults.baseURL = "http://localhost:5005/auth/v1"
+Axios.defaults.baseURL = "https://itskillscenter-server.herokuapp.com/auth/v1"
 
 function App() {
   return (

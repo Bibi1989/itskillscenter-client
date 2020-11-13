@@ -2,10 +2,15 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { UserContext } from '../context/UserContext'
 
+const image = './assets/background.png'
+
 const SuccesComponent = () => {
   const {user} = useContext(UserContext)
   return (
     <Container>
+      <div style={{display: 'flex', justifyContent: 'center'}}>
+        <img src={image} alt="success component" width="40%"/>
+      </div>
       <H1>{user?.username?.toUpperCase()}</H1>
       <P>{user?.email}</P>
     </Container>
@@ -21,9 +26,10 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 50vh;
+  height: 70vh;
   margin: auto;
   margin-top: 10vh;
+  
 `
 const H1 = styled.h1`
 
