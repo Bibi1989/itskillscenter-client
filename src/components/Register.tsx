@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
-import FacebookLogin from 'react-facebook-login';
+// import FacebookLogin from 'react-facebook-login';
 
 import { UserContext } from '../context/UserContext'
 import CustomButtons from '../ui/Buttons'
@@ -22,9 +22,9 @@ type TargetType = {
 
 const Register = () => {
 
-  const facebookID: any = process.env.REACT_APP_FACEBOOK_APP_ID
+  // const facebookID: any = process.env.REACT_APP_FACEBOOK_APP_ID
 
-  const {user, register_error, registerUser, responseFacebook} = useContext(UserContext)
+  const {user, register_error, registerUser, responseFacebook, responseGoogle} = useContext(UserContext)
 
   const history = useHistory()
 
@@ -96,35 +96,29 @@ const Register = () => {
             display: 'flex',
             justifyContent: 'center'
           }}>
-            <CustomButtons title={"Facebook"} style={{
-              marginRight: '15px',
-              background: 'dodgerblue',
-              width: '150px',
-              textAlign: 'center'
-            }} />
-            <FacebookLogin
-              appId={facebookID}
-              autoLoad={true}
-              fields="name,email,picture"
-              // onClick={componentClicked}
-              callback={(response: any) => responseFacebook(response, history)}
-              textButton={"Facebook"}
-              icon="fa-facebook"
-              containerStyle={{
+            <CustomButtons 
+              title={"Facebook"} 
+              background={"#4267B2"} 
+              onClick={() => responseFacebook(history)}
+              style={{
                 marginRight: '15px',
                 width: '150px',
-                textAlign: 'center',
-                height: "35px",
-                fontSize: '14px'
+                textAlign: 'center'
               }}
-              size="small"
+              icon="fab fa-facebook-f"
             />
-            <CustomButtons title={"Twitter"} color={"#777777"} style={{
+            <CustomButtons 
+              title={"Google"} 
+              icon="fab fa-google"
+              color={"#777777"} 
+              style={{
               background: "white",
               border: '1px solid #777777',
               width: '150px',
               textAlign: 'center'
-            }} />
+            }} 
+            onClick={() => responseGoogle(history)}
+            />
           </div>
         </AuthButtons>
       </Form>

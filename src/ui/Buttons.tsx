@@ -7,12 +7,13 @@ type TProps = {
   background?: string;
   style?: any;
   onClick?: any;
+  icon?: string;
 }
 
 const CustomButtons = (props: TProps) => {
   return (
     <Button style={props.style} onClick={props.onClick} background={props.background} color={props.color}>
-      {props.title}
+      <i className={props.icon ? props.icon : ""} style={props.icon ? {marginRight: '15px'}: {}}></i> {props.title}
     </Button>
   )
 }
