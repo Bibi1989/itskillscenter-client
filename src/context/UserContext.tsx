@@ -41,6 +41,11 @@ export const UserProvider = ({children}: any) => {
   const registerUser = async (user: UserType, history: any) => {
     try {
       dispatch({type: LOADING, payload: true})
+      if(user?.confirmPassword !== user?.password) {
+        dispatch({type: REGISTER_ERROR, payload: "Password do not match"})
+        dispatch({type: LOADING, payload: false})
+        return
+      }
       const response = await Axios.post('/register', user)
       dispatch({type: REGISTER, payload: response?.data?.user})
       dispatch({type: LOADING, payload: false})

@@ -62,7 +62,7 @@ const Register = () => {
 
       <Form>
         <Error>{register_error && !user?.email ? register_error : null}</Error>
-        <Error>{!register_error && error && !user?.email ? error : null}</Error>
+        {/* <Error>{!register_error && error && !user?.email ? error : null}</Error> */}
         <InputDiv>
           <CustomInput type={"text"} placeholder={"Username"} name={"username"} onChange={handleInput} />
         </InputDiv>
@@ -82,11 +82,7 @@ const Register = () => {
             textAlign: 'center'
           }}
           onClick={() =>  {
-            if(values.confirmPassword === values.password) {
-              registerUser(values, history)
-            }else{
-              setError("Password do not match")
-            }
+            registerUser(values, history)
           }}
           />}
         </ButtonContainer>
