@@ -13,9 +13,9 @@ const { TabPane } = Tabs;
 const Navbar = () => {
   const [loginModal, setLoginModal] = useState(false)
 
+  const history = useHistory()
   const {clearUser, user} = useContext(UserContext)
 
-  const history = useHistory()
 
   const showLoginModal = () => {
     setLoginModal(true);
