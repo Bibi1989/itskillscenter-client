@@ -32,7 +32,7 @@ const Navbar = () => {
   return (
     <Nav>
       <Name onClick={() => {
-        clearUser(history)
+        // clearUser(history)
         history.push('/')
         setLoginModal(false)
       }}>

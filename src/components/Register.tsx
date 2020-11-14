@@ -1,3 +1,4 @@
+import { Spin } from 'antd'
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
@@ -6,6 +7,7 @@ import styled from 'styled-components'
 import { UserContext } from '../context/UserContext'
 import CustomButtons from '../ui/Buttons'
 import CustomInput from '../ui/CustomInput'
+import Spinner from '../ui/Spinner'
 
 type RType = {
   username: string;
@@ -24,7 +26,7 @@ const Register = () => {
 
   // const facebookID: any = process.env.REACT_APP_FACEBOOK_APP_ID
 
-  const {user, register_error, registerUser, responseFacebook, responseGoogle} = useContext(UserContext)
+  const {user, register_error, loading, registerUser, responseFacebook, responseGoogle} = useContext(UserContext)
 
   const history = useHistory()
 
@@ -75,7 +77,7 @@ const Register = () => {
         </InputDiv>
 
         <ButtonContainer>
-          <CustomButtons title={"Sign Up"} background={"lightgreen"} color={"green"} style={{
+          {loading ? <Spin /> : <CustomButtons title={"Sign Up"} background={"lightgreen"} color={"green"} style={{
             width: "150px",
             textAlign: 'center'
           }}
@@ -86,7 +88,7 @@ const Register = () => {
               setError("Password do not match")
             }
           }}
-          />
+          />}
         </ButtonContainer>
 
         <AuthButtons>

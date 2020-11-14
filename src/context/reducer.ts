@@ -1,4 +1,4 @@
-import { CLEAR, FACEBOOK, GOOGLE, LOGIN, LOGIN_ERROR, REGISTER, REGISTER_ERROR } from "./types";
+import { CLEAR, FACEBOOK, GOOGLE, LOADING, LOGIN, LOGIN_ERROR, REGISTER, REGISTER_ERROR } from "./types";
 import { UserType } from "./UserContext";
 
 
@@ -6,6 +6,7 @@ type StateType = {
   user: UserType,
   login_error: any
   register_error: any
+  loading: boolean
 }
 type ActionType = {
   payload: any;
@@ -16,6 +17,7 @@ export const initialUserState = {
   user: null,
   login_error: null,
   register_error: null,
+  loading: false,
 }
 
 export const reducer = (state: StateType, action: ActionType) => {
@@ -49,6 +51,11 @@ export const reducer = (state: StateType, action: ActionType) => {
       return {
         ...state,
         register_error: action.payload
+      }
+    case LOADING:
+      return {
+        ...state,
+        loading: action.payload
       }
     case CLEAR:
       return {

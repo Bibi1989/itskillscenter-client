@@ -1,3 +1,4 @@
+import { Spin } from 'antd'
 import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
@@ -6,6 +7,7 @@ import styled from 'styled-components'
 import { UserContext } from '../context/UserContext'
 import CustomButtons from '../ui/Buttons'
 import CustomInput from '../ui/CustomInput'
+import Spinner from '../ui/Spinner'
 
 type RType = {
   username?: string;
@@ -23,7 +25,7 @@ const Login = () => {
 
   // const facebookID: any = process.env.REACT_APP_FACEBOOK_APP_ID
 
-  const {user, login_error, loginUser, responseFacebook, responseGoogle} = useContext(UserContext)
+  const {user, login_error, loading, loginUser, responseFacebook, responseGoogle} = useContext(UserContext)
 
   const history = useHistory()
 
@@ -47,6 +49,7 @@ const Login = () => {
 
       <Form>
         <Error>{login_error && !user?.email ? login_error : null}</Error>
+        
         <InputDiv>
           <CustomInput type={"email"} placeholder={"Email"} name={"email"} onChange={handleInput} />
         </InputDiv>
@@ -55,14 +58,14 @@ const Login = () => {
         </InputDiv>
 
         <ButtonContainer>
-          <CustomButtons title={"Sign In"} background={"lightgreen"} color={"green"} style={{
+          {loading ? <Spin /> : <CustomButtons title={"Sign In"} background={"lightgreen"} color={"green"} style={{
             width: "150px",
             textAlign: 'center'
           }}
           onClick={() => {
             loginUser(values, history)
           }}
-          />
+          />}
 
           <P style={{marginTop: "10px"}}>Forgot Your Password?</P>
         </ButtonContainer>
