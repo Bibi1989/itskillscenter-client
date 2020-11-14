@@ -23,9 +23,13 @@ const firebaseConfig: any = {
   measurementId
 };
 
+console.log(firebase.apps.length)
+
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+if(!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+}
 
 class Authenticate {
 
