@@ -9,7 +9,7 @@ const SuccesComponent = () => {
   return (
     <Container>
       <div style={{display: 'flex', justifyContent: 'center'}}>
-        <img src={image} alt="success component" width="40%"/>
+        <img src={image} alt="success component" width="50%"/>
       </div>
       <H1>Welcome</H1>
       <H1>{user?.username?.toUpperCase()}</H1>
@@ -31,6 +31,20 @@ const Container = styled.div`
   margin: auto;
   margin-top: 10vh;
   
+  @media(max-width: 960px) {
+    width: 96%;
+
+    img{
+      width: 40%;
+    }
+  }
+  @media(max-width: 560px) {
+    width: 96%;
+
+    img{
+      width: 80%;
+    }
+  }
 `
 const H1 = styled.h1`
 
