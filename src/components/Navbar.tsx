@@ -80,23 +80,42 @@ const Name = styled.div`
   cursor: pointer;
 `
 const ModalStyle = styled(Modal)`
-  border-radius: 15px !important;
-
   ::-webkit-scrollbar{
     display: none;
+  }
+
+  .ant-modal-content{
+    border-radius: 10px;
+    overflow: hidden;
   }
 
   .ant-modal-body{
     padding: 0 !important;
     padding-bottom: 20px !important;
-
   }
 `
 const TabWrapper = styled.div`
   .ant-tabs-nav-list {
     width: 100%;
     .ant-tabs-tab{
-      flex: 1
+      flex: 1;
+      width: 100%;
+
+      #rc-tabs-0-tab-2{
+        width: 100%;
+        text-align: center;
+        outline: none;
+      }
+      #rc-tabs-0-tab-1{
+        width: 100%;
+        text-align: center;
+        outline: none;
+      }
+
+      &.ant-tabs-tab-btn{
+        text-align: center;
+        color: red;
+      }
     }
   }
 `

@@ -105,7 +105,7 @@ const Login = () => {
 }
 
 const Container = styled.div`
-  padding: 0 30px;
+  padding: 0 6%;
 `
 const H1 = styled.h1`
   text-align: center;
