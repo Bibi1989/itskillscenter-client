@@ -14,7 +14,10 @@ const Navbar = () => {
   const [loginModal, setLoginModal] = useState(false)
 
   const history = useHistory()
-  const {clearUser, user} = useContext(UserContext)
+  const {clearUser} = useContext(UserContext)
+
+  const sessionStorageUser: any = sessionStorage.getItem('itskillscenterUser')
+  const user = JSON.parse(sessionStorageUser)
 
 
   const showLoginModal = () => {

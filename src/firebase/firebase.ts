@@ -32,15 +32,14 @@ class Authenticate {
   async registerWithFacebook() {
     const provider = new firebase.auth.FacebookAuthProvider()
     const details: any = await firebase.auth().signInWithPopup(provider)
-    console.log("details === ", details?.credential?.accessToken)
     sessionStorage.setItem("itskillscenterToken", JSON.stringify(details?.credential?.accessToken))
     return details?.additionalUserInfo?.profile
   }
 
   async signInWithGoogle() {
     const googleProvider = new firebase.auth.GoogleAuthProvider()
-    const details = await firebase.auth().signInWithPopup(googleProvider)
-    console.log("google == ", details?.additionalUserInfo?.profile)
+    const details: any = await firebase.auth().signInWithPopup(googleProvider)
+    sessionStorage.setItem("itskillscenterToken", JSON.stringify(details?.credential?.accessToken))
     return details?.additionalUserInfo?.profile
   }
 
