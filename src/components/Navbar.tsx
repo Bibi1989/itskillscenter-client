@@ -61,10 +61,6 @@ const Navbar = () => {
             </TabPane>
           </Tabs>
         </TabWrapper>
-          {/* <p style={{
-            textAlign: 'center',
-            backgroundColor: 'transparent'
-          }}>Having trouble logging in?</p> */}
       </ModalStyle>
     </Nav>
   )

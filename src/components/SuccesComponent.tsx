@@ -1,11 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { UserContext } from '../context/UserContext'
 
 const image = './assets/background.png'
 
 const SuccesComponent = () => {
-  const {user} = useContext(UserContext)
+  // const {user} = useContext(UserContext)
+  const sessionStorageUser: any = sessionStorage.getItem('itskillscenterUser')
+  const user = JSON.parse(sessionStorageUser)
   return (
     <Container>
       <div style={{display: 'flex', justifyContent: 'center'}}>

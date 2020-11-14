@@ -31,10 +31,10 @@ class Authenticate {
 
   async registerWithFacebook() {
     const provider = new firebase.auth.FacebookAuthProvider()
-    const details = await firebase.auth().signInWithPopup(provider)
-    console.log("details === ", details?.additionalUserInfo)
+    const details: any = await firebase.auth().signInWithPopup(provider)
+    console.log("details === ", details?.credential?.accessToken)
+    sessionStorage.setItem("itskillscenterToken", JSON.stringify(details?.credential?.accessToken))
     return details?.additionalUserInfo?.profile
-    // return this.auth.currentUser.updateProfile({ displayName: name });
   }
 
   async signInWithGoogle() {
@@ -46,6 +46,7 @@ class Authenticate {
 
   async facebookSignout() {
     await firebase.auth().signOut()
+    sessionStorage.removeItem('itskillscenterToken')
  }
 }
 

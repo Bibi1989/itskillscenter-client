@@ -47,6 +47,8 @@ export const UserProvider = ({children}: any) => {
         return
       }
       const response = await Axios.post('/register', user)
+      sessionStorage.setItem("itskillscenterToken", JSON.stringify(response?.data?.token))
+      sessionStorage.setItem("itskillscenterUser", JSON.stringify(response?.data?.user))
       dispatch({type: REGISTER, payload: response?.data?.user})
       dispatch({type: LOADING, payload: false})
       history.push('/user')
@@ -60,6 +62,8 @@ export const UserProvider = ({children}: any) => {
     try {
       dispatch({type: LOADING, payload: true})
       const response = await Axios.post('/login', user)
+      sessionStorage.setItem("itskillscenterToken", JSON.stringify(response?.data?.token))
+      sessionStorage.setItem("itskillscenterUser", JSON.stringify(response?.data?.user))
       dispatch({type: LOGIN, payload: response?.data?.user})
       dispatch({type: LOADING, payload: false})
       history.push('/user')
@@ -68,14 +72,19 @@ export const UserProvider = ({children}: any) => {
       dispatch({type: LOGIN_ERROR, payload: error?.response?.data?.error})
     }
   }
-  const clearUser = (history: any) => {
+  const clearUser = async (history: any) => {
     dispatch({type: CLEAR, payload: null})
+    authenticate.facebookSignout()
     history.push('/')
   }
   const responseFacebook = async (history: any) => {
     try {
       const user: any = await authenticate.registerWithFacebook()
-      console.log("u == ", user)
+      sessionStorage.setItem("itskillscenterUser", JSON.stringify({
+        ...user,
+        username: user?.name
+      }))
+      
       dispatch({type: FACEBOOK, payload: {
         ...user,
         username: user?.name
@@ -90,7 +99,12 @@ export const UserProvider = ({children}: any) => {
   const responseGoogle = async (history: any) => {
     try {
       const user: any = await authenticate.signInWithGoogle()
-      console.log("u == ", user)
+      sessionStorage.setItem("itskillscenterUser", JSON.stringify({
+        ...user,
+        username: user?.name
+      }))
+      
+
       dispatch({type: GOOGLE, payload: {
         ...user,
         username: user?.name

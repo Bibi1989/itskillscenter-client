@@ -1,5 +1,5 @@
 import { Spin } from 'antd'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 // import FacebookLogin from 'react-facebook-login';
@@ -7,7 +7,6 @@ import styled from 'styled-components'
 import { UserContext } from '../context/UserContext'
 import CustomButtons from '../ui/Buttons'
 import CustomInput from '../ui/CustomInput'
-import Spinner from '../ui/Spinner'
 
 type RType = {
   username: string;
@@ -29,16 +28,6 @@ const Register = () => {
   const {user, register_error, loading, registerUser, responseFacebook, responseGoogle} = useContext(UserContext)
 
   const history = useHistory()
-
-  const [error, setError] = useState("")
-
-  useEffect(() => {
-    if(user?.email) {
-      setError("")
-    }
-
-    // eslint-disable-next-line
-  }, [])
 
   const [values, setValues] = useState<RType | any>({
     username: "",

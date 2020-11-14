@@ -58,6 +58,8 @@ export const reducer = (state: StateType, action: ActionType) => {
         loading: action.payload
       }
     case CLEAR:
+      sessionStorage.removeItem('itskillscenterToken')
+      sessionStorage.removeItem('itskillscenterUser')
       return {
         ...state,
         user: action.payload,

@@ -7,7 +7,6 @@ import styled from 'styled-components'
 import { UserContext } from '../context/UserContext'
 import CustomButtons from '../ui/Buttons'
 import CustomInput from '../ui/CustomInput'
-import Spinner from '../ui/Spinner'
 
 type RType = {
   username?: string;
