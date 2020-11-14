@@ -11,6 +11,7 @@ const SuccesComponent = () => {
       <div style={{display: 'flex', justifyContent: 'center'}}>
         <img src={image} alt="success component" width="40%"/>
       </div>
+      <H1>Welcome</H1>
       <H1>{user?.username?.toUpperCase()}</H1>
       <P>{user?.email}</P>
     </Container>
